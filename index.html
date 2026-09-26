@@ -68,14 +68,30 @@ header.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srg
 @media (max-width: 640px) {
   .top .row { flex-wrap: wrap; height: auto; padding: 9px 0 8px; gap: 10px; }
   .search { order: 3; flex-basis: 100%; max-width: none; margin-left: 0; }
-  .theme { margin-left: auto; }
+  .theme:not(.burger) { margin-left: auto; }
 }
-nav.main { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; padding: 0 0 8px; }
-nav.main::-webkit-scrollbar { display: none; }
-nav.main a { white-space: nowrap; padding: 5px 11px; border-radius: 16px; color: var(--ink2); font-size: 14px; font-weight: 500; }
+/* menu: dva tematické řádky (Výuka / Materiály), pod 1000 px hamburger s panelem skupin */
+nav.main { display: grid; gap: 2px; padding: 0 0 8px; }
+nav.main .navrow { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 4px; }
+nav.main .navlab { width: 78px; flex: none; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); }
+nav.main .navgrp { display: contents; }
+nav.main .gt { display: none; }
+nav.main a { white-space: nowrap; padding: 4px 11px; border-radius: 16px; color: var(--ink2); font-size: 14px; font-weight: 500; }
 nav.main a:hover { background: var(--surface2); text-decoration: none; }
 nav.main a.on { background: var(--ink); color: var(--surface); }
-nav.main .sep { width: 1px; background: var(--line2); margin: 4px 6px; flex: none; }
+nav.main .sep { width: 1px; height: 18px; background: var(--line2); margin: 0 6px; flex: none; }
+.burger { display: none; }
+@media (max-width: 999px) {
+  .burger { display: grid; }
+  nav.main { display: none; }
+  body.navopen nav.main { display: block; max-height: calc(100vh - 120px); overflow-y: auto; padding: 4px 0 12px; border-top: 1px solid var(--line); }
+  nav.main .navrow { display: block; }
+  nav.main .navlab, nav.main .sep { display: none; }
+  nav.main .navgrp { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 2px 6px; padding: 8px 0 6px; }
+  nav.main .navgrp + .sep + .navgrp, nav.main .navrow + .navrow .navgrp:first-of-type { border-top: 1px solid var(--line); }
+  nav.main .gt { display: block; grid-column: 1 / -1; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); padding: 2px 11px 4px; }
+  nav.main a { padding: 8px 11px; font-size: 15px; }
+}
 
 main { padding: 22px 0 60px; min-height: 70vh; }
 footer { border-top: 1px solid var(--line); color: var(--ink3); font-size: 13px; padding: 18px 0 30px; }
@@ -311,6 +327,8 @@ table.mx td button.w2 { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 30%, t
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
   <symbol id="i-pl" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 17h5"/></symbol>
   <symbol id="i-mk" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2V17h5v-1.2c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></symbol>
@@ -342,6 +360,7 @@ table.mx td button.w2 { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 30%, t
         <div class="drop" id="drop"></div>
       </div>
       <button class="theme" id="theme" title="Světlý / tmavý vzhled" aria-label="Přepnout vzhled"><svg class="i"><use href="#i-moon"/></svg></button>
+      <button class="theme burger" id="burger" title="Menu" aria-label="Otevřít menu" aria-expanded="false" aria-controls="nav"><svg class="i"><use href="#i-menu"/></svg></button>
     </div>
     <nav class="main" id="nav"></nav>
   </div>
@@ -406,11 +425,21 @@ applyTheme(store.get('theme'));
 $('#theme').onclick = () => { const cur = document.documentElement.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); const n = cur === 'dark' ? 'light' : 'dark'; store.set('theme', n); applyTheme(n); };
 
 /* ---------- navigace */
-const NAV = [['#/', 'Úvod'], ...C.map(c => [`#/kurz/${c.id}`, c.kratce]), ['sep'], ['#/svp', 'ŠVP – výstupy'], ['#/ucivo', 'Učivo'], ['#/matice', 'Matice'],
-  ['#/projekty', 'Projekty'], ['#/pokusy', 'Pokusy doma'], ['#/testy', 'Ukázkové testy'], ['#/ai', 'Učení s AI'], ['#/exkurze', 'Exkurze'], ['#/karty', 'Obrazové karty'], ['#/grafy', 'Grafy funkcí'], ['#/zdroje', 'Rozcestník']];
+const NAV = [
+  { row: 'Výuka', groups: [
+    { t: 'Kurzy', items: [['#/', 'Úvod'], ...C.map(c => [`#/kurz/${c.id}`, c.kratce])] },
+    { t: 'ŠVP a učivo', items: [['#/svp', 'ŠVP – výstupy'], ['#/ucivo', 'Učivo'], ['#/matice', 'Matice']] }] },
+  { row: 'Materiály', groups: [
+    { t: 'Procvičuj a ověřuj', items: [['#/testy', 'Ukázkové testy'], ['#/karty', 'Obrazové karty'], ['#/grafy', 'Grafy funkcí'], ['#/zdroje', 'Rozcestník']] },
+    { t: 'Objevuj a tvoř', items: [['#/projekty', 'Projekty'], ['#/pokusy', 'Pokusy doma'], ['#/exkurze', 'Exkurze'], ['#/ai', 'Učení s AI']] }] }];
 function renderNav(route) {
-  $('#nav').innerHTML = NAV.map(([h, t]) => h === 'sep' ? '<span class="sep"></span>' : `<a href="${h}" class="${route === h || (h !== '#/' && route.startsWith(h)) ? 'on' : ''}">${esc(t)}</a>`).join('');
+  const link = ([h, t]) => `<a href="${h}" class="${route === h || (h !== '#/' && route.startsWith(h)) ? 'on' : ''}">${esc(t)}</a>`;
+  $('#nav').innerHTML = NAV.map(r => `<div class="navrow"><span class="navlab">${esc(r.row)}</span>${r.groups.map(g =>
+    `<div class="navgrp"><span class="gt">${esc(g.t)}</span>${g.items.map(link).join('')}</div>`).join('<span class="sep"></span>')}</div>`).join('');
 }
+const setMenu = open => { document.body.classList.toggle('navopen', open); const b = $('#burger'); b.setAttribute('aria-expanded', open); b.setAttribute('aria-label', open ? 'Zavřít menu' : 'Otevřít menu'); b.innerHTML = icon(open ? 'x' : 'menu'); };
+$('#burger').onclick = () => setMenu(!document.body.classList.contains('navopen'));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('navopen')) setMenu(false); });
 
 /* ---------- úvod */
 function viewHome() {
@@ -810,7 +839,7 @@ function route() {
   const l = parts[0] === 'hodina' && LES[parts[1]];
   document.title = l ? `${ltitle(l)} – Průvodce výukou` : 'Průvodce výukou STEM';
 }
-addEventListener('hashchange', route);
+addEventListener('hashchange', () => { setMenu(false); route(); });
 route();
 })();
 </script>
