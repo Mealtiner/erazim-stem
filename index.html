@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Průvodce výukou STEM</title>
-
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20width%3D%2264%22%20height%3D%2264%22%20role%3D%22img%22%20aria-label%3D%22STEM%20pr%C5%AFvodce%22%3E%3Ctitle%3ESTEM%20pr%C5%AFvodce%3C%2Ftitle%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%231b1d24%22%2F%3E%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2262.5%22%20height%3D%2262.5%22%20rx%3D%2213.25%22%20fill%3D%22none%22%20stroke%3D%22%233a3e4b%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M12.4%202.4A6%204%200%201%200%207%208A6%204%200%201%201%201.6%2013.6%22%20transform%3D%22translate%288%207.8%29%20scale%281.15%29%22%20fill%3D%22none%22%20stroke%3D%22%23f09a5c%22%20stroke-width%3D%223.652%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M0.5%200H13.5M7%200V16%22%20transform%3D%22translate%2839.9%207.8%29%20scale%281.15%29%22%20fill%3D%22none%22%20stroke%3D%22%2374c378%22%20stroke-width%3D%223.652%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M13%200H1.2V16H13M1.2%208H10.5%22%20transform%3D%22translate%288%2037.8%29%20scale%281.15%29%22%20fill%3D%22none%22%20stroke%3D%22%23b690dc%22%20stroke-width%3D%223.652%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M1.2%2016V0L7%209.2L12.8%200V16%22%20transform%3D%22translate%2839.9%2037.8%29%20scale%281.15%29%22%20fill%3D%22none%22%20stroke%3D%22%2374a8ec%22%20stroke-width%3D%223.652%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E" type="image/svg+xml">
 <style>
 :root {
   --bg: #f6f5f2; --surface: #ffffff; --surface2: #f0efeb; --line: #e2e0da; --line2: #cfccc4;
@@ -57,7 +57,9 @@ header.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srg
 .top .row { display: flex; align-items: center; gap: 14px; height: 58px; }
 .brand { display: flex; align-items: center; gap: 9px; font-weight: 700; color: var(--ink); white-space: nowrap; font-size: 17px; }
 .brand:hover { text-decoration: none; }
-.brand .logo { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(135deg, var(--mat), var(--stem) 55%, var(--fyz)); color: #fff; font-size: 14px; }
+.brand .logo { width: 32px; height: 32px; display: block; flex: none; } .brand .logo svg { display: block; width: 100%; height: 100%; }
+/* slovo STEM v barvách předmětů: S fyzika, T informatika, E STEM projekty, M matematika */
+.wm i { font-style: normal; } .wm .w-s { color: var(--fyz); } .wm .w-t { color: var(--inf); } .wm .w-e { color: var(--stem); } .wm .w-m { color: var(--mat); }
 .search { position: relative; flex: 1; max-width: 460px; margin-left: auto; }
 .search input { width: 100%; height: 38px; border: 1px solid var(--line2); border-radius: 19px; background: var(--surface); color: var(--ink); padding: 0 14px 0 38px; font: inherit; font-size: 15px; }
 .search input:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
@@ -154,11 +156,11 @@ nav.main .navrow.proj { display: none; }
 .btn:hover { text-decoration: none; border-color: var(--ink3); }
 .btn.p { background: var(--accent); border-color: var(--accent); color: #fff; }
 .btn.p:hover { filter: brightness(1.07); }
-.shot { position: relative; height: 380px; }
+.shot { position: relative; width: 100%; max-width: 560px; aspect-ratio: 1 / 1.06; }  /* výška z šířky: obrázek A4 (58 % šířky) + posun + popisek */
 .shot a { position: absolute; width: 58%; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 14px 34px rgba(20, 30, 50, .18); background: #fff; }
 .shot a img { display: block; width: 100%; }
-.shot a:nth-child(1) { left: 0; top: 34px; transform: rotate(-4deg); } .shot a:nth-child(2) { left: 21%; top: 0; z-index: 2; } .shot a:nth-child(3) { right: 0; top: 46px; transform: rotate(4deg); }
-.shot .cap { position: absolute; bottom: -6px; left: 0; right: 0; text-align: center; font-size: 13px; color: var(--ink3); }
+.shot a:nth-child(1) { left: 0; top: 6%; transform: rotate(-4deg); } .shot a:nth-child(2) { left: 21%; top: 0; z-index: 2; } .shot a:nth-child(3) { right: 0; top: 8%; transform: rotate(4deg); }
+.shot .cap { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; font-size: 13px; color: var(--ink3); }
 .ai-strip { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; margin: 18px 0 8px; padding: 18px 22px; border-radius: 16px; background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--warn-ink); }
 .ai-strip .ic { font-size: 30px; } .ai-strip b { display: block; font-size: 17px; margin-bottom: 3px; color: var(--ink); } .ai-strip p { margin: 0; font-size: 14.5px; }
 .ai-strip a { font-weight: 700; white-space: nowrap; }
@@ -192,9 +194,10 @@ nav.main .navrow.proj { display: none; }
 .copy { font: inherit; font-family: inherit; font-size: 12px; padding: 1px 8px; border-radius: 10px; border: 1px solid var(--line2); background: var(--surface2); color: var(--ink2); cursor: pointer; }
 .ainote { margin: 14px 0 0; padding: 10px 14px; border-radius: 10px; background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--warn-ink); font-size: 14px; }
 .tech { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+footer .author { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--line); }
 .tech ul { margin: 6px 0 0; padding-left: 18px; } .tech li { margin: 4px 0; color: var(--ink2); font-size: 14.5px; } .tech li b { color: var(--ink); }
-@media (max-width: 900px) { .hero2, .demo, .support { grid-template-columns: 1fr; } .shot { height: 330px; max-width: 520px; } .flow { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .flow, .amounts { grid-template-columns: 1fr; } .ai-strip { grid-template-columns: auto 1fr; } .ai-strip a { grid-column: 2; } .box2.good { grid-template-columns: 1fr; } .shot { height: 250px; } .btnrow .btn { width: 100%; justify-content: center; } }
+@media (max-width: 900px) { .hero2, .demo, .support { grid-template-columns: 1fr; } .shot { margin: 0 auto; } .flow { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .flow, .amounts { grid-template-columns: 1fr; } .ai-strip { grid-template-columns: auto 1fr; } .ai-strip a { grid-column: 2; } .box2.good { grid-template-columns: 1fr; } .btnrow .btn { width: 100%; justify-content: center; } }
 /* landing page (veřejná verze, původní) */
 .land { padding: 34px 0 10px; display: grid; gap: 16px; max-width: 900px; }
 .land .kick { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--stem); }
@@ -434,7 +437,7 @@ table.mx td button.w2 { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 30%, t
 <header class="top">
   <div class="wrap">
     <div class="row">
-      <a class="brand" href="#/"><span class="logo">∑</span><span>Průvodce výukou</span></a>
+      <a class="brand" href="#/"><span class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#1b1d24"/><rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.25" fill="none" stroke="#3a3e4b" stroke-width="1.5"/><path d="M12.4 2.4A6 4 0 1 0 7 8A6 4 0 1 1 1.6 13.6" transform="translate(8 7.8) scale(1.15)" fill="none" stroke="#f09a5c" stroke-width="3.652" stroke-linecap="round" stroke-linejoin="round"/><path d="M0.5 0H13.5M7 0V16" transform="translate(39.9 7.8) scale(1.15)" fill="none" stroke="#74c378" stroke-width="3.652" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 0H1.2V16H13M1.2 8H10.5" transform="translate(8 37.8) scale(1.15)" fill="none" stroke="#b690dc" stroke-width="3.652" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.2 16V0L7 9.2L12.8 0V16" transform="translate(39.9 37.8) scale(1.15)" fill="none" stroke="#74a8ec" stroke-width="3.652" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Průvodce výukou</span></a>
       <div class="search">
         <svg class="i"><use href="#i-search"/></svg>
         <label class="sr" for="q">Hledat</label>
@@ -467,10 +470,13 @@ const strip = html => { const d = document.createElement('div'); d.innerHTML = h
 const C = DATA.courses, CBY = Object.fromEntries(C.map(c => [c.id, c]));
 const PUB = DATA.public || null;  // veřejná verze (stempruvodce.cz): landing page na #/, průvodce na #/pruvodce
 const PROJ = [['#/o-projektu', 'O projektu'], ['#/jak-vznika', 'Jak vzniká'], ['#/chyba', 'Nahlásit chybu'], ['#/podpora', '☕ Podpořit']];
-if (PUB) { const bs = document.querySelector('.brand span:last-child'); if (bs) bs.textContent = 'STEM průvodce';
+if (PUB) { const bs = document.querySelector('.brand span:last-child'); if (bs) bs.innerHTML = '<span class="wm"><i class="w-s">S</i><i class="w-t">T</i><i class="w-e">E</i><i class="w-m">M</i> průvodce</span>';
   const th = document.getElementById('theme'); if (th) th.insertAdjacentHTML('beforebegin', '<nav class="toplinks" id="toplinks" aria-label="O projektu"></nav>');
   const ft = document.getElementById('foot'); if (ft) ft.innerHTML = '<p style="margin:0 0 6px"><b>STEM průvodce vzniká s využitím generativní AI.</b> Obsah může obsahovat chyby – před použitím ve výuce jej vždy ověřte.</p>'
-    + '<p style="margin:0">' + PROJ.map(([h, t]) => `<a href="${h}">${t.replace('☕ ', '')}</a>`).join(' · ') + ' · Materiály vznikly pro výuku na online <a href="https://stredni.erazim.cz/online/" target="_blank" rel="noopener">Střední škole Erazim</a>. PDF se otevírají v nové kartě.</p>'; }
+    + '<p style="margin:0">' + PROJ.map(([h, t]) => `<a href="${h}">${t.replace('☕ ', '')}</a>`).join(' · ') + ' · Materiály vznikly pro výuku na online <a href="https://stredni.erazim.cz/online/" target="_blank" rel="noopener">Střední škole Erazim</a>. PDF se otevírají v nové kartě.</p>'
+    + (PUB.autor ? (() => { const m = PUB.autor.mail.join('@'); const fb = PUB.autor.fb ? ` · <a href="${PUB.autor.fb}" target="_blank" rel="noopener">Facebook</a>` : '';
+      const dat = [PUB.vytvoreno ? `Materiály vytvořeny ${PUB.vytvoreno}` : '', PUB.publikovano ? `Publikováno ${PUB.publikovano}` : ''].filter(Boolean).join(' · ');
+      return `<p class="author">Tvůrce projektu: <b>${String(PUB.autor.jmeno).replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'})[c])}</b> · <a href="mailto:${m}">${m}</a>${fb}${dat ? `<br><span class="muted">${dat}</span>` : ''}</p>`; })() : ''); }
 const LES = {}; DATA.lessons.forEach(l => LES[l.id] = l);
 const OUTS = {}, PARTOF = {};
 DATA.outputs.forEach(o => { OUTS[o.code] = o; o.parts.forEach(p => { OUTS[p.code] = Object.assign({ parent: o.code, subj: o.subj, chap: o.chap, per: o.per }, p); PARTOF[p.code] = o.code; }); });
@@ -952,7 +958,7 @@ function viewLanding() {
     ['🚌', '#/exkurze', 'Exkurze a výjezdy', `${ex} dobře naplánovaných návrhů výjezdů za vědou a technikou po celé republice.`]];
   return `<section class="hero2"><div>
       <div class="eyebrow">Otevřené vzdělávání · STEM</div>
-      <h1>STEM průvodce</h1>
+      <h1><span class="wm"><i class="w-s">S</i><i class="w-t">T</i><i class="w-e">E</i><i class="w-m">M</i> průvodce</span></h1>
       <p class="lead">Otevřené materiály pro výuku matematiky, fyziky a informatiky. Přípravy lekcí, pracovní listy s řešením, další příklady, projekty, domácí experimenty, obrazové karty a ověřené odkazy na jednom místě.</p>
       <div class="trust"><span>Zdarma</span><span>Bez registrace</span><span>Bez paywallu</span></div>
       <div class="btnrow"><a class="btn p" href="#/pruvodce">Procházet materiály →</a><a class="btn" href="#/jak-vznika">Jak projekt vzniká</a></div></div>
