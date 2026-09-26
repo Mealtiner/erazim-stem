@@ -1,0 +1,63 @@
+pripojeni,poskytovatel,doma_lat_deg,doma_lon_deg,server,mesto,server_lat_deg,server_lon_deg,rtt_min_ms,rtt_prumer_ms,ztraceno_pct
+wifi,domácí optika,50.0755,14.4378,www.cvut.cz,Praha,50.103,14.392,5.0,7.9,0
+wifi,domácí optika,50.0755,14.4378,www.ujep.cz,Ústí nad Labem,50.661,14.032,6.5,11.9,0
+wifi,domácí optika,50.0755,14.4378,www.tul.cz,Liberec,50.767,15.056,5.9,9.2,0
+wifi,domácí optika,50.0755,14.4378,www.uhk.cz,Hradec Králové,50.209,15.833,5.8,8.2,0
+wifi,domácí optika,50.0755,14.4378,www.jcu.cz,České Budějovice,48.975,14.474,8.1,10.7,0
+wifi,domácí optika,50.0755,14.4378,www.muni.cz,Brno,49.195,16.607,7.3,8.9,0
+wifi,domácí optika,50.0755,14.4378,www.upol.cz,Olomouc,49.594,17.251,8.6,15.1,0
+wifi,domácí optika,50.0755,14.4378,www.utb.cz,Zlín,49.227,17.671,8.7,17.8,0
+wifi,domácí optika,50.0755,14.4378,www.stuba.sk,Bratislava,48.149,17.108,9.3,17.6,0
+wifi,domácí optika,50.0755,14.4378,www.univie.ac.at,Vídeň,48.208,16.374,8.8,12.4,0
+wifi,domácí optika,50.0755,14.4378,www.elte.hu,Budapešť,47.498,19.04,10.8,12.3,0
+wifi,domácí optika,50.0755,14.4378,www.agh.edu.pl,Krakov,50.065,19.945,20.5,23.3,0
+wifi,domácí optika,50.0755,14.4378,www.uw.edu.pl,Varšava,52.23,21.012,15.9,20.0,0
+wifi,domácí optika,50.0755,14.4378,fra-de-ping.vultr.com,Frankfurt,50.111,8.682,11.2,13.3,0
+wifi,domácí optika,50.0755,14.4378,ams-nl-ping.vultr.com,Amsterdam,52.368,4.904,17.2,18.5,0
+wifi,domácí optika,50.0755,14.4378,par-fr-ping.vultr.com,Paříž,48.857,2.352,26.1,28.3,0
+wifi,domácí optika,50.0755,14.4378,lon-gb-ping.vultr.com,Londýn,51.507,-0.128,22.9,29.6,0
+wifi,domácí optika,50.0755,14.4378,sto-se-ping.vultr.com,Stockholm,59.329,18.069,23.1,29.6,0
+wifi,domácí optika,50.0755,14.4378,hel1-speed.hetzner.com,Helsinky,60.17,24.938,23.3,27.6,0
+wifi,domácí optika,50.0755,14.4378,mad-es-ping.vultr.com,Madrid,40.417,-3.704,34.0,36.4,0
+wifi,domácí optika,50.0755,14.4378,tlv-il-ping.vultr.com,Tel Aviv,32.085,34.782,65.9,67.0,0
+wifi,domácí optika,50.0755,14.4378,nj-us-ping.vultr.com,New Jersey (USA),40.555,-74.464,106.0,114.8,0
+wifi,domácí optika,50.0755,14.4378,il-us-ping.vultr.com,Chicago,41.878,-87.63,121.5,125.8,0
+wifi,domácí optika,50.0755,14.4378,tx-us-ping.vultr.com,Dallas,32.777,-96.797,131.3,137.7,0
+wifi,domácí optika,50.0755,14.4378,lax-ca-us-ping.vultr.com,Los Angeles,34.052,-118.244,160.4,165.2,0
+wifi,domácí optika,50.0755,14.4378,bom-in-ping.vultr.com,Bombaj,19.076,72.878,105.2,108.6,0
+wifi,domácí optika,50.0755,14.4378,jnb-za-ping.vultr.com,Johannesburg,-26.204,28.047,135.3,138.2,0
+wifi,domácí optika,50.0755,14.4378,sgp-ping.vultr.com,Singapur,1.352,103.82,170.0,172.4,0
+wifi,domácí optika,50.0755,14.4378,sao-br-ping.vultr.com,São Paulo,-23.551,-46.633,174.9,183.6,0
+wifi,domácí optika,50.0755,14.4378,hnd-jp-ping.vultr.com,Tokio,35.676,139.65,210.3,215.0,0
+wifi,domácí optika,50.0755,14.4378,syd-au-ping.vultr.com,Sydney,-33.869,151.209,278.9,281.6,0
+mobil,mobilní data 4G,50.0755,14.4378,www.cvut.cz,Praha,50.103,14.392,26.3,31.6,0
+mobil,mobilní data 4G,50.0755,14.4378,www.ujep.cz,Ústí nad Labem,50.661,14.032,27.4,41.2,0
+mobil,mobilní data 4G,50.0755,14.4378,www.tul.cz,Liberec,50.767,15.056,30.0,41.2,0
+mobil,mobilní data 4G,50.0755,14.4378,www.uhk.cz,Hradec Králové,50.209,15.833,26.4,59.9,0
+mobil,mobilní data 4G,50.0755,14.4378,www.jcu.cz,České Budějovice,48.975,14.474,28.2,45.2,0
+mobil,mobilní data 4G,50.0755,14.4378,www.muni.cz,Brno,49.195,16.607,28.2,36.3,0
+mobil,mobilní data 4G,50.0755,14.4378,www.upol.cz,Olomouc,49.594,17.251,,,100
+mobil,mobilní data 4G,50.0755,14.4378,www.utb.cz,Zlín,49.227,17.671,30.1,40.6,0
+mobil,mobilní data 4G,50.0755,14.4378,www.stuba.sk,Bratislava,48.149,17.108,30.8,41.9,0
+mobil,mobilní data 4G,50.0755,14.4378,www.univie.ac.at,Vídeň,48.208,16.374,29.6,35.7,0
+mobil,mobilní data 4G,50.0755,14.4378,www.elte.hu,Budapešť,47.498,19.04,32.3,47.7,0
+mobil,mobilní data 4G,50.0755,14.4378,www.agh.edu.pl,Krakov,50.065,19.945,42.3,55.8,0
+mobil,mobilní data 4G,50.0755,14.4378,www.uw.edu.pl,Varšava,52.23,21.012,38.7,95.1,0
+mobil,mobilní data 4G,50.0755,14.4378,fra-de-ping.vultr.com,Frankfurt,50.111,8.682,33.3,44.1,0
+mobil,mobilní data 4G,50.0755,14.4378,ams-nl-ping.vultr.com,Amsterdam,52.368,4.904,38.5,51.8,0
+mobil,mobilní data 4G,50.0755,14.4378,par-fr-ping.vultr.com,Paříž,48.857,2.352,49.5,67.3,0
+mobil,mobilní data 4G,50.0755,14.4378,lon-gb-ping.vultr.com,Londýn,51.507,-0.128,44.2,60.4,0
+mobil,mobilní data 4G,50.0755,14.4378,sto-se-ping.vultr.com,Stockholm,59.329,18.069,44.7,64.7,0
+mobil,mobilní data 4G,50.0755,14.4378,hel1-speed.hetzner.com,Helsinky,60.17,24.938,45.1,53.2,0
+mobil,mobilní data 4G,50.0755,14.4378,mad-es-ping.vultr.com,Madrid,40.417,-3.704,55.0,67.7,0
+mobil,mobilní data 4G,50.0755,14.4378,tlv-il-ping.vultr.com,Tel Aviv,32.085,34.782,88.7,104.1,0
+mobil,mobilní data 4G,50.0755,14.4378,nj-us-ping.vultr.com,New Jersey (USA),40.555,-74.464,131.2,143.3,0
+mobil,mobilní data 4G,50.0755,14.4378,il-us-ping.vultr.com,Chicago,41.878,-87.63,142.3,159.8,0
+mobil,mobilní data 4G,50.0755,14.4378,tx-us-ping.vultr.com,Dallas,32.777,-96.797,154.1,170.3,0
+mobil,mobilní data 4G,50.0755,14.4378,lax-ca-us-ping.vultr.com,Los Angeles,34.052,-118.244,181.5,195.2,0
+mobil,mobilní data 4G,50.0755,14.4378,bom-in-ping.vultr.com,Bombaj,19.076,72.878,125.9,139.8,0
+mobil,mobilní data 4G,50.0755,14.4378,jnb-za-ping.vultr.com,Johannesburg,-26.204,28.047,156.6,162.2,0
+mobil,mobilní data 4G,50.0755,14.4378,sgp-ping.vultr.com,Singapur,1.352,103.82,191.0,197.7,0
+mobil,mobilní data 4G,50.0755,14.4378,sao-br-ping.vultr.com,São Paulo,-23.551,-46.633,196.2,215.7,10
+mobil,mobilní data 4G,50.0755,14.4378,hnd-jp-ping.vultr.com,Tokio,35.676,139.65,231.9,242.1,10
+mobil,mobilní data 4G,50.0755,14.4378,syd-au-ping.vultr.com,Sydney,-33.869,151.209,299.4,313.7,0
