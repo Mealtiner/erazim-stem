@@ -169,6 +169,7 @@ ul.clean { list-style: none; padding: 0; margin: 0; }
 .docs { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); margin-top: 16px; align-items: start; }
 .docs.imgs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; align-items: stretch; }
 .docs.imgs.wide { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+.note-ai { margin-top: 16px; max-width: 860px; border-left: 4px solid var(--accent); } .note-ai p { margin: 0; } .note-ai p + p { margin-top: 8px; }
 .doc { display: flex; gap: 11px; align-items: center; padding: 11px 13px; color: var(--ink); }
 .doc:hover { text-decoration: none; border-color: var(--ink3); }
 .doc b { display: block; font-size: 14.5px; line-height: 1.25; color: var(--ink); } .doc > span > span { font-size: 12.5px; color: var(--ink3); }
@@ -681,9 +682,9 @@ function viewTesty() {
   return `<div class="crumbs"><a href="#/">Úvod</a> › Ukázkové testy</div><h1 style="font-size:clamp(26px,3.6vw,34px)">Ukázkové testy k výstupům</h1>
     <p class="lead" style="margin:8px 0 0">Jak může vypadat test, kterým doložíš výstup do portfolia. Každý je na 30 minut, bez bodů a známek; na konci je klíč, řešení a kritéria splnění. Když chceš test ke splnění výstupu, domluv se s vyučujícím.${DATA.extra.prehled_testy ? ` <a href="${DATA.extra.prehled_testy}" target="_blank" rel="noopener">Přehled testů (PDF)</a>.` : ''}</p>${body || '<div class="empty">Ukázkové testy se připravují.</div>'}`;
 }
-function viewDocs(druh, title, lead) {
+function viewDocs(druh, title, lead, extra = '') {
   const it = DOC.filter(d => d.druh === druh);
-  return `<div class="crumbs"><a href="#/">Úvod</a> › ${esc(title)}</div><h1 style="font-size:clamp(26px,3.6vw,34px)">${esc(title)}</h1><p class="lead" style="margin:8px 0 0">${lead}</p>
+  return `<div class="crumbs"><a href="#/">Úvod</a> › ${esc(title)}</div><h1 style="font-size:clamp(26px,3.6vw,34px)">${esc(title)}</h1><p class="lead" style="margin:8px 0 0">${lead}</p>${extra}
     <div class="docs imgs wide" style="margin-top:16px">${it.map(d => `<a class="card doc img" href="${d.u}" target="_blank" rel="noopener">${d.img ? `<img src="${d.img}" alt="" loading="lazy">` : ''}<div class="t"><span><b style="font-size:14px">${esc(d.nazev)}</b><span class="dd">${d.pod}</span></span></div></a>`).join('') || '<div class="empty">Připravuje se.</div>'}</div>`;
 }
 
@@ -791,7 +792,8 @@ function route() {
     case 'projekty': html = viewProjekty(parts[1]); if (parts[1]) hlId = 'p-' + parts[1]; break;
     case 'pokusy': html = viewPokusy(parts[1]); after = bindPokusy; if (parts[1]) hlId = 'k-' + parts[1]; break;
     case 'testy': html = viewTesty(); break;
-    case 'ai': html = viewDocs('Učení s AI', 'Učení s AI', 'Jak se učit s umělou inteligencí – hlavně s Gemini v režimu učení s vedením: jak se ptát, jak si nechat vysvětlit postup a jak odpovědi ověřovat.'); break;
+    case 'ai': html = viewDocs('Učení s AI', 'Učení s AI', 'Jak se učit s umělou inteligencí – hlavně s Gemini v režimu učení s vedením: jak se ptát, jak si nechat vysvětlit postup a jak odpovědi ověřovat.',
+      `<div class="card pad note-ai"><p>Většina z vás má díky školní licenci účet <b>Google Workspace for Education</b>. Není to jen e-mail a Disk – jeho součástí jsou i nástroje s umělou inteligencí, třeba <a href="https://gemini.google.com" target="_blank" rel="noopener"><b>Gemini</b></a> a <a href="https://notebooklm.google.com" target="_blank" rel="noopener"><b>NotebookLM</b></a>. Přihlas se do nich vždy školním účtem: podle Googlu pak tvoje chaty a nahrané materiály nikdo nečte a nepoužívají se k trénování modelů.</p><p class="small muted">Co přesně máš k dispozici, záleží na nastavení školy a u některých funkcí i na věku – například nahrávání fotek a souborů do Gemini mají žáci do 18 let zatím vypnuté. Podrobnosti najdeš v prvním PDF.</p></div>`); break;
     case 'exkurze': html = viewDocs('Exkurze a výjezdy', 'Exkurze a výjezdy', 'Návrhy společných výjezdů a exkurzí za STEM. Účast je vždy dobrovolná a individuální – přijet může jeden i třicet lidí.'); break;
     case 'karty': html = viewCards(); break;
     case 'grafy': html = viewGrafy(); break;
