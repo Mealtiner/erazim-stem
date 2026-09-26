@@ -308,7 +308,7 @@ dl.poj dt { font-weight: 650; } dl.poj dd { margin: 0; color: var(--ink2); }
 @media (max-width: 600px) { dl.poj { grid-template-columns: 1fr; gap: 2px; } dl.poj dd { margin-bottom: 8px; } }
 .vzl { display: grid; gap: 6px; }
 .vzl div { display: grid; grid-template-columns: minmax(0, max-content) 1fr; gap: 16px; padding: 6px 0; border-bottom: 1px solid var(--line); align-items: center; }
-.vzl .f { font-size: 17px; overflow-x: auto; } .vzl .p { color: var(--ink2); font-size: 14.5px; }
+.vzl .f { font-size: 17px; overflow-x: auto; overflow-y: hidden; padding: 4px 0; scrollbar-width: thin; }  /* bez svislého posuvníku u zlomků */ .vzl .p { color: var(--ink2); font-size: 14.5px; }
 @media (max-width: 600px) { .vzl div { grid-template-columns: 1fr; gap: 2px; } }
 .warn li { margin-bottom: 6px; }
 .phases { display: flex; height: 34px; border-radius: 8px; overflow: hidden; margin: 4px 0 12px; border: 1px solid var(--line); }
