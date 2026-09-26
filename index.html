@@ -12,6 +12,8 @@
   --mat: #2e6db4; --mat-s: #e8f0fa; --fyz: #c25f16; --fyz-s: #fcefe4; --inf: #357f39; --inf-s: #e7f3e7;
   --stem: #7b4fa0; --stem-s: #f1ebf7; --konz: #65635d; --konz-s: #efeeea;
   --ok: #1b8a5a; --no: #b4452f; --pre: #9a6a00;
+  --warn-bg: #fff7e6; --warn-line: #f0d7a7; --warn-ink: #6e5424; --good-bg: #eaf7f0; --good-line: #c4e6d4; --good-ink: #2f5e48;
+  --bad-bg: #fdf0ee; --bad-line: #f0cbc4; --bad-ink: #7a3a30; --deep: #152338; --deep-ink: #c9d4e2;
   --shadow: 0 1px 2px rgba(0,0,0,.05), 0 2px 8px rgba(0,0,0,.05);
   --radius: 10px;
   color-scheme: light;
@@ -23,6 +25,8 @@
     --mat: #74a8ec; --mat-s: #1e2b3b; --fyz: #f09a5c; --fyz-s: #3a2819; --inf: #74c378; --inf-s: #1d3320;
     --stem: #b690dc; --stem-s: #2e2439; --konz: #a9a69e; --konz-s: #2b2a27;
     --ok: #5fcf98; --no: #f08a74; --pre: #e3b44f;
+    --warn-bg: #2f2716; --warn-line: #5a4a24; --warn-ink: #ecd6a4; --good-bg: #16291f; --good-line: #2d4f3c; --good-ink: #a9dcc1;
+    --bad-bg: #331c19; --bad-line: #5a302a; --bad-ink: #f0b8ad; --deep: #0f1a2a; --deep-ink: #b9c6d6;
     --shadow: none; color-scheme: dark;
   }
 }
@@ -32,6 +36,8 @@
   --mat: #74a8ec; --mat-s: #1e2b3b; --fyz: #f09a5c; --fyz-s: #3a2819; --inf: #74c378; --inf-s: #1d3320;
   --stem: #b690dc; --stem-s: #2e2439; --konz: #a9a69e; --konz-s: #2b2a27;
   --ok: #5fcf98; --no: #f08a74; --pre: #e3b44f;
+    --warn-bg: #2f2716; --warn-line: #5a4a24; --warn-ink: #ecd6a4; --good-bg: #16291f; --good-line: #2d4f3c; --good-ink: #a9dcc1;
+    --bad-bg: #331c19; --bad-line: #5a302a; --bad-ink: #f0b8ad; --deep: #0f1a2a; --deep-ink: #b9c6d6;
   --shadow: none; color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -128,7 +134,68 @@ ul.clean { list-style: none; padding: 0; margin: 0; }
 .hero { padding: 26px 0 8px; }
 .hero h1 { font-size: clamp(28px, 4.2vw, 42px); letter-spacing: -.01em; }
 .hero p { margin: 12px 0 0; }
-/* landing page (veřejná verze) */
+/* veřejná verze – projektové stránky */
+.toplinks { display: flex; gap: 2px; align-items: center; flex: none; }
+.toplinks a { font-size: 14px; padding: 5px 10px; border-radius: 16px; color: var(--ink2); white-space: nowrap; }
+.toplinks a:hover { background: var(--surface2); text-decoration: none; }
+.toplinks a.on { background: var(--surface2); color: var(--ink); }
+.toplinks a.coffee, nav.main a.coffee { border: 1px solid var(--warn-line); background: var(--warn-bg); color: var(--warn-ink); font-weight: 700; }
+@media (max-width: 999px) { .toplinks { display: none; } }
+nav.main .navrow.proj { display: none; }
+@media (max-width: 999px) { body.navopen nav.main .navrow.proj { display: block; } }
+.hero2 { display: grid; grid-template-columns: 1.15fr .85fr; gap: 44px; align-items: center; padding: 40px 0 18px; }
+.eyebrow { display: inline-flex; padding: 6px 11px; border-radius: 999px; background: var(--mat-s); color: var(--mat); font-size: 13px; font-weight: 700; margin-bottom: 16px; }
+.hero2 h1 { font-size: clamp(42px, 7vw, 76px); line-height: .98; letter-spacing: -.045em; margin: 0 0 16px; }
+.hero2 .lead { font-size: clamp(18px, 2vw, 21px); margin: 0; max-width: 700px; }
+.trust { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px; color: var(--ink2); font-size: 14.5px; font-weight: 600; }
+.trust span::before { content: "✓"; color: var(--ok); font-weight: 900; margin-right: 6px; }
+.btnrow { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 16px; border: 1px solid var(--line2); background: var(--surface); color: var(--ink); cursor: pointer; }
+.btn:hover { text-decoration: none; border-color: var(--ink3); }
+.btn.p { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.p:hover { filter: brightness(1.07); }
+.shot { position: relative; height: 380px; }
+.shot a { position: absolute; width: 58%; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 14px 34px rgba(20, 30, 50, .18); background: #fff; }
+.shot a img { display: block; width: 100%; }
+.shot a:nth-child(1) { left: 0; top: 34px; transform: rotate(-4deg); } .shot a:nth-child(2) { left: 21%; top: 0; z-index: 2; } .shot a:nth-child(3) { right: 0; top: 46px; transform: rotate(4deg); }
+.shot .cap { position: absolute; bottom: -6px; left: 0; right: 0; text-align: center; font-size: 13px; color: var(--ink3); }
+.ai-strip { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; margin: 18px 0 8px; padding: 18px 22px; border-radius: 16px; background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--warn-ink); }
+.ai-strip .ic { font-size: 30px; } .ai-strip b { display: block; font-size: 17px; margin-bottom: 3px; color: var(--ink); } .ai-strip p { margin: 0; font-size: 14.5px; }
+.ai-strip a { font-weight: 700; white-space: nowrap; }
+.kick2 { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 44px 0 6px; }
+.h2big { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15; letter-spacing: -.02em; margin: 0 0 8px; }
+.sub { color: var(--ink2); font-size: 17px; margin: 0 0 18px; max-width: 780px; }
+.feat .emo { font-size: 24px; display: block; margin-bottom: 8px; }
+.demo { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+.demo .thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.demo .thumbs a { border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.demo .thumbs img { display: block; width: 100%; aspect-ratio: 210/297; object-fit: cover; object-position: top; }
+.ticks { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+.ticks li::before { content: "✓"; color: var(--ok); font-weight: 900; margin-right: 8px; }
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.flow .card { padding: 18px; } .flow .n { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font-weight: 800; margin-bottom: 10px; }
+.flow h3 { font-size: 16px; margin: 0 0 4px; } .flow p { margin: 0; color: var(--ink2); font-size: 14.5px; }
+.motto { margin-top: 16px; padding: 18px 22px; border-radius: 14px; background: var(--mat-s); text-align: center; font-size: clamp(20px, 2.6vw, 26px); font-weight: 800; letter-spacing: -.01em; }
+.box2 { padding: 18px 22px; border-radius: 14px; margin-top: 16px; }
+.box2 b { display: block; margin-bottom: 4px; color: var(--ink); } .box2 p { margin: 0; }
+.box2.warn { background: var(--bad-bg); border: 1px solid var(--bad-line); color: var(--bad-ink); }
+.box2.good { background: var(--good-bg); border: 1px solid var(--good-line); color: var(--good-ink); display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; }
+.deep { background: var(--deep); color: var(--deep-ink); border-radius: 18px; padding: 28px 30px; } .deep h2 { color: #fff; margin: 0 0 8px; } .deep p { margin: 0; }
+.support { display: grid; grid-template-columns: 1fr 360px; gap: 30px; align-items: start; }
+.amounts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 16px 0; }
+.amounts div { border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; background: var(--surface); }
+.amounts b { display: block; font-size: 18px; } .amounts span { font-size: 13.5px; color: var(--ink2); }
+.qrcard { padding: 18px; } .qrcard img { display: block; width: 100%; max-width: 280px; margin: 0 auto; background: #fff; border-radius: 8px; }
+.bank { margin: 14px 0 0; display: grid; grid-template-columns: 1fr; gap: 2px; font-size: 14px; }
+.bank dt { color: var(--ink3); font-size: 12.5px; margin-top: 8px; } .bank dd { margin: 0; font-family: Menlo, Consolas, monospace; font-size: 13.5px; display: flex; gap: 8px; align-items: center; justify-content: space-between; }
+.bank dd span { white-space: nowrap; font-size: 13px; }
+.copy { font: inherit; font-family: inherit; font-size: 12px; padding: 1px 8px; border-radius: 10px; border: 1px solid var(--line2); background: var(--surface2); color: var(--ink2); cursor: pointer; }
+.ainote { margin: 14px 0 0; padding: 10px 14px; border-radius: 10px; background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--warn-ink); font-size: 14px; }
+.tech { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.tech ul { margin: 6px 0 0; padding-left: 18px; } .tech li { margin: 4px 0; color: var(--ink2); font-size: 14.5px; } .tech li b { color: var(--ink); }
+@media (max-width: 900px) { .hero2, .demo, .support { grid-template-columns: 1fr; } .shot { height: 330px; max-width: 520px; } .flow { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .flow, .amounts { grid-template-columns: 1fr; } .ai-strip { grid-template-columns: auto 1fr; } .ai-strip a { grid-column: 2; } .box2.good { grid-template-columns: 1fr; } .shot { height: 250px; } .btnrow .btn { width: 100%; justify-content: center; } }
+/* landing page (veřejná verze, původní) */
 .land { padding: 34px 0 10px; display: grid; gap: 16px; max-width: 900px; }
 .land .kick { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--stem); }
 .land h1 { font-size: clamp(30px, 5vw, 50px); line-height: 1.08; letter-spacing: -.015em; margin: 0; }
@@ -399,8 +466,11 @@ const strip = html => { const d = document.createElement('div'); d.innerHTML = h
 
 const C = DATA.courses, CBY = Object.fromEntries(C.map(c => [c.id, c]));
 const PUB = DATA.public || null;  // veřejná verze (stempruvodce.cz): landing page na #/, průvodce na #/pruvodce
+const PROJ = [['#/o-projektu', 'O projektu'], ['#/jak-vznika', 'Jak vzniká'], ['#/chyba', 'Nahlásit chybu'], ['#/podpora', '☕ Podpořit']];
 if (PUB) { const bs = document.querySelector('.brand span:last-child'); if (bs) bs.textContent = 'STEM průvodce';
-  const ft = document.getElementById('foot'); if (ft) ft.innerHTML = 'STEM průvodce · matematika, fyzika a informatika pro střední školu · materiály z výuky na online <a href="https://stredni.erazim.cz/online/" target="_blank" rel="noopener">Střední škole Erazim</a>. PDF se otevírají v nové kartě.'; }
+  const th = document.getElementById('theme'); if (th) th.insertAdjacentHTML('beforebegin', '<nav class="toplinks" id="toplinks" aria-label="O projektu"></nav>');
+  const ft = document.getElementById('foot'); if (ft) ft.innerHTML = '<p style="margin:0 0 6px"><b>STEM průvodce vzniká s využitím generativní AI.</b> Obsah může obsahovat chyby – před použitím ve výuce jej vždy ověřte.</p>'
+    + '<p style="margin:0">' + PROJ.map(([h, t]) => `<a href="${h}">${t.replace('☕ ', '')}</a>`).join(' · ') + ' · Materiály vznikly pro výuku na online <a href="https://stredni.erazim.cz/online/" target="_blank" rel="noopener">Střední škole Erazim</a>. PDF se otevírají v nové kartě.</p>'; }
 const LES = {}; DATA.lessons.forEach(l => LES[l.id] = l);
 const OUTS = {}, PARTOF = {};
 DATA.outputs.forEach(o => { OUTS[o.code] = o; o.parts.forEach(p => { OUTS[p.code] = Object.assign({ parent: o.code, subj: o.subj, chap: o.chap, per: o.per }, p); PARTOF[p.code] = o.code; }); });
@@ -449,10 +519,12 @@ const NAV = [
     { t: 'ŠVP a učivo', items: [['#/svp', 'ŠVP – výstupy'], ['#/ucivo', 'Učivo'], ['#/matice', 'Matice']] }] },
   { row: 'Materiály', groups: [
     { t: 'Procvičuj a ověřuj', items: [['#/testy', 'Ukázkové testy'], ['#/karty', 'Obrazové karty'], ['#/grafy', 'Grafy funkcí'], ['#/zdroje', 'Rozcestník']] },
-    { t: 'Objevuj a tvoř', items: [['#/projekty', 'Projekty'], ['#/pokusy', 'Pokusy doma'], ['#/exkurze', 'Exkurze'], ['#/ai', 'Učení s AI']] }] }];
+    { t: 'Objevuj a tvoř', items: [['#/projekty', 'Projekty'], ['#/pokusy', 'Pokusy doma'], ['#/exkurze', 'Exkurze'], ['#/ai', 'Učení s AI']] }] },
+  ...(PUB ? [{ row: 'Projekt', cls: 'proj', groups: [{ t: 'O projektu', items: PROJ }] }] : [])];
 function renderNav(route) {
-  const link = ([h, t]) => `<a href="${h}" class="${route === h || (h !== '#/' && route.startsWith(h)) ? 'on' : ''}">${esc(t)}</a>`;
-  $('#nav').innerHTML = NAV.map(r => `<div class="navrow"><span class="navlab">${esc(r.row)}</span>${r.groups.map(g =>
+  const link = ([h, t]) => `<a href="${h}" class="${h === '#/podpora' ? 'coffee ' : ''}${route === h || (h !== '#/' && route.startsWith(h)) ? 'on' : ''}">${esc(t)}</a>`;
+  if (PUB) $('#toplinks').innerHTML = PROJ.map(([h, t]) => `<a href="${h}" class="${h === '#/podpora' ? 'coffee ' : ''}${route === h ? 'on' : ''}">${esc(t)}</a>`).join('');
+  $('#nav').innerHTML = NAV.map(r => `<div class="navrow${r.cls ? ' ' + r.cls : ''}"><span class="navlab">${esc(r.row)}</span>${r.groups.map(g =>
     `<div class="navgrp"><span class="gt">${esc(g.t)}</span>${g.items.map(link).join('')}</div>`).join('<span class="sep"></span>')}</div>`).join('');
 }
 const setMenu = open => { document.body.classList.toggle('navopen', open); const b = $('#burger'); b.setAttribute('aria-expanded', open); b.setAttribute('aria-label', open ? 'Zavřít menu' : 'Otevřít menu'); b.innerHTML = icon(open ? 'x' : 'menu'); };
@@ -460,11 +532,15 @@ $('#burger').onclick = () => setMenu(!document.body.classList.contains('navopen'
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('navopen')) setMenu(false); });
 
 /* ---------- úvod */
-function viewHome() {
+function courseCards() {
   const cnt = k => { const ls = courseLessons(k); const f = t => ls.reduce((a, l) => a + l.files.filter(x => x.k === t).length, 0); return { h: ls.length, pl: f('pl'), mk: f('mk'), ok: f('ok') + f('gf'), kz: f('kz') }; };
   const cc = C.map(c => { const n = cnt(c.id); const cls = c.id === 'ZA' || c.id === 'MM' ? 's-MAT' : 's-STEM';
     return `<a class="card course ${cls}" href="#/kurz/${c.id}"><h3>${esc(c.nazev)}</h3><p>${esc(c.popis)}</p>
       <div class="nums"><span><b>${n.h}</b> lekcí</span><span><b>${n.pl}</b> pracovních listů</span><span><b>${n.mk}</b> Must know</span>${n.ok ? `<span><b>${n.ok}</b> obrazových karet</span>` : ''}${n.kz ? `<span><b>${n.kz}</b> katalogů zdrojů</span>` : ''}</div></a>`; }).join('');
+  return cc;
+}
+function viewHome() {
+  const cc = courseCards();
   const leg = Object.entries(DOCK).map(([k, [n, ic, d]]) => `<div><span class="dk dk-${k}">${icon(ic)}</span><span><b>${n}</b>${esc(d)}</span></div>`).join('');
   return `<section class="hero"><h1>Průvodce výukou matematiky, fyziky a informatiky</h1>
     <p class="lead">U každého tématu najdeš, co se v něm řeší a co ne, co bys měl znát předem, podklady na dohnání, pracovní list, další příklady, tahák Must know, obrazové karty, strukturu lekce a ověřené odkazy na výklady, videa a procvičování.</p></section>
@@ -577,6 +653,7 @@ function viewLesson(id) {
     <div class="lhead s-${l.p}"><div class="meta"><span class="tag">${esc(SUBJN[l.p] || l.pn)}</span><span>lekce L${l.h}</span><span>týden ${l.t} · ${esc(l.m)}</span>${prim}${l.modul ? `<span>${esc(l.modul)}</span>` : ''}</div>
       <h1>${esc(l.tema)}</h1>${pr ? `<p class="sum">${pr.shrnuti}</p><p class="obs">${l.obsah}</p>` : `<p class="sum">${l.obsah}</p>`}</div>
     ${docs || '<p class="pending" style="margin-top:14px">Materiály k tomuto tématu se připravují.</p>'}
+    ${PUB ? `<p class="ainote">🤖 Materiály vznikly s pomocí generativní AI a mohou obsahovat chyby – před použitím je ověřte. <a href="${reportHref(ltitle(l), `${CBY[l.k].nazev} · ${ltitle(l)} (${l.id})`)}" target="_blank" rel="noopener"><b>Nahlásit chybu v tomto tématu →</b></a></p>` : ''}
     ${three}${svpBox}${poj}${vz}${pz}${ph}${zd}
     ${l.vy.some(c => testByCode[c]) ? `<div class="card pad" style="margin-top:14px"><h3 style="font-size:16px;margin-bottom:6px">Ukázkové testy k výstupům (30 min)</h3><div>${l.vy.map(tchip).join('')}</div></div>` : ''}
     ${(pjByLesson[l.id] || []).length ? `<div class="card pad" style="margin-top:14px"><h3 style="font-size:16px;margin-bottom:6px">Projekty a pokusy doma k tématu</h3><div>${pjByLesson[l.id].map(pchip).join('')}</div></div>` : ''}
@@ -822,42 +899,169 @@ document.addEventListener('click', e => { if (!e.target.closest('.search')) drop
 drop.addEventListener('click', () => drop.classList.remove('on'));
 document.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== qi && !/input|textarea/i.test(document.activeElement.tagName)) { e.preventDefault(); qi.focus(); } });
 
-/* ---------- landing page (jen veřejná verze) */
+/* ---------- veřejná verze: úvod a stránky o projektu (texty pro dospělé návštěvníky vykají) */
+function reportHref(title, where) {
+  const R = (PUB && PUB.report) || {};
+  const body = `Kde: ${where}\nOdkaz: ${location.href}\n\nCo je špatně:\n\n\nJak by to mělo být (pokud víte):\n`;
+  if (R.email) return `mailto:${R.email}?subject=${encodeURIComponent('STEM průvodce – chyba: ' + title)}&body=${encodeURIComponent(body)}`;
+  return `${R.url}?title=${encodeURIComponent('Chyba: ' + title)}&body=${encodeURIComponent(body)}`;
+}
+const aiStrip = () => `<div class="ai-strip"><div class="ic" aria-hidden="true">🤖</div><div><b>Projekt vytvořený s pomocí generativní AI</b>
+  <p>STEM průvodce je experimentální vzdělávací projekt. Texty, pracovní listy, příklady, projekty, grafické podklady i technické řešení webu vznikají s rozsáhlým využitím generativní AI. AI může chybovat – materiály proto mohou obsahovat věcné, výpočtové, metodické, jazykové nebo jiné chyby. Před použitím ve výuce je prosím ověřte.</p></div>
+  <a href="#/jak-vznika">Jak přesně vzniká →</a></div>`;
+const flowBlock = () => `<div class="flow">
+  <div class="card"><div class="n">1</div><h3>Člověk zadává cíl</h3><p>Autor určuje zadání, didaktický záměr, strukturu kurzů a pravidla – třeba že jde o online výuku, bez známek a s pokusy doma.</p></div>
+  <div class="card"><div class="n">2</div><h3>AI vytváří návrh</h3><p>AI píše texty, úlohy a řešení, kreslí obrazové karty, sestavuje PDF a programuje tento web.</p></div>
+  <div class="card"><div class="n">3</div><h3>Materiál je zveřejněn</h3><p>Po automatických kontrolách je materiál volně dostupný – bez registrace a bez paywallu.</p></div>
+  <div class="card"><div class="n">4</div><h3>Člověk jej ověřuje</h3><p>Před použitím ve výuce je potřeba obsah zkontrolovat a přizpůsobit konkrétním žákům.</p></div></div>
+  <div class="motto">AI vytvořila. Člověk ověřuje.</div>`;
+const verifyBox = () => `<div class="box2 warn"><b>⚠️ Před použitím vždy ověřte</b><p>Materiály nejsou vydávány za garantovaně bezchybné učební texty. Pokud je používáte při výuce nebo samostudiu, zkontrolujte zejména výpočty, řešení úloh, odborná tvrzení a metodické postupy. Důležité informace doporučujeme ověřit z nezávislého zdroje.</p></div>`;
+const reportBox = () => `<div class="box2 good"><div><b style="font-size:19px">Našli jste chybu?</b><p>Nesedí výsledek? Je zadání nejasné? Narazili jste na věcnou nebo metodickou chybu? Dejte vědět – pomůžete tím zlepšit materiály i ostatním.</p></div>
+  <a class="btn" href="${reportHref('obecné', 'STEM průvodce')}" target="_blank" rel="noopener">⚑ Nahlásit chybu</a></div>`;
+function supportBlock() {
+  const B = PUB.bank || {};
+  const row = (k, v, raw) => `<dt>${k}</dt><dd><span>${esc(v)}</span><button class="copy" data-copy="${esc(raw || v)}" type="button">Kopírovat</button></dd>`;
+  return `<div class="support"><div>
+    <div class="kick2" style="margin-top:0">Podpořte další materiály</div>
+    <h2 class="h2big">☕ Pomáhá vám STEM průvodce?</h2>
+    <p class="sub">Všechny materiály jsou dostupné zdarma a bez registrace a nezamykají se za paywall. Pokud vám STEM průvodce pomáhá při výuce nebo vám šetří čas při přípravě, můžete dobrovolně přispět na jeho další provoz a rozvoj.</p>
+    <div class="amounts"><div><b>50 Kč</b><span>jedno kafe ☕</span></div><div><b>100 Kč</b><span>dvojité kafe ☕☕</span></div><div><b>250 Kč</b><span>palivo pro další materiály 🚀</span></div></div>
+    <p style="margin:0 0 8px">Naskenujte QR kód ve své bankovní aplikaci. Částku si můžete libovolně změnit. Pravidelnou podporu nastavíte trvalým příkazem na stejný účet.</p>
+    <p class="small muted" style="margin:0"><b>Podpora je zcela dobrovolná a nemá vliv na přístup k materiálům.</b></p></div>
+    <aside class="card qrcard"><img src="${PUB.qr}" alt="QR Platba – příspěvek na STEM průvodce" width="280" height="280" loading="lazy">
+    <dl class="bank">${row('Číslo účtu', B.ucet)}${row('IBAN', B.iban, (B.iban || '').replace(/\s/g, ''))}${row('BIC', B.bic)}</dl></aside></div>`;
+}
+function bindCopy() {
+  document.querySelectorAll('.copy').forEach(b => b.onclick = async () => { try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'Zkopírováno'; } catch (e) { b.textContent = 'Označte a zkopírujte'; } setTimeout(() => b.textContent = 'Kopírovat', 1800); });
+}
 function viewLanding() {
   const nf = DATA.lessons.reduce((a, l) => a + l.files.length, 0), nz = DATA.lessons.reduce((a, l) => a + (l.zd && !l.zdtmp ? l.zd.length : 0), 0);
   const ai = DOC.filter(d => d.druh === 'Učení s AI').length, ex = DOC.filter(d => d.druh === 'Exkurze a výjezdy' && !/^EX-00/.test(d.id)).length;
+  const sl = LES[PUB.sample] || DATA.lessons[0];
+  const fi = k => sl.files.find(f => f.k === k);
+  const shot = ['pl', 'ok', 'mk'].map(fi).filter(Boolean).slice(0, 3);
   const st = [[DATA.lessons.length, 'témat ve 4 kurzech'], [nf, 'PDF materiálů k tématům'], [TS.length, 'ukázkových testů k výstupům'],
     [PK.length, 'karet domácích pokusů'], [PJ.length, 'STEM projektů'], [nz, 'ověřených odkazů na internet']];
-  const f = [['#/pruvodce', 'Kurzy a témata', 'STEM pro 1.+2. a 3.+4. ročník, Matematika pro začátečníky a Maturitní matematika – téma po tématu.'],
-    ['#/svp', 'ŠVP – výstupy', 'Co má žák na konci umět. U každého výstupu témata, projekty, pokusy a ukázkový test.'],
-    ['#/testy', 'Ukázkové testy', '30minutové testy k výstupům s klíčem, řešením a kritérii splnění – bez bodů a známek.'],
-    ['#/projekty', 'STEM projekty', 'Měření mobilem nebo domácími pomůckami, matematický model a zpracování dat v Pythonu.'],
-    ['#/pokusy', 'Pokusy doma', `${PK.length} karet domácích experimentů podle ročního období, včetně astronomie a AI.`],
-    ['#/ai', 'Učení s AI', `${ai} návodů, jak se učit s Gemini v režimu učení s vedením a jak ověřovat, co AI napíše.`],
-    ['#/exkurze', 'Exkurze a výjezdy', `${ex} návrhů dobrovolných výjezdů za vědou a technikou po celé republice.`],
-    ['#/zdroje', 'Rozcestník', 'Ověřené výklady, videa, simulace a procvičování s kontrolou na jednom místě.']];
-  return `<section class="land"><div class="kick">Otevřený průvodce výukou STEM</div>
-    <h1>Matematika, fyzika a informatika přehledně, téma po tématu</h1>
-    <p class="lead">STEM průvodce je kompletní sada materiálů pro střední školu. Ke každému tématu najdeš, co se v něm řeší a co ne, co bys měl znát předem, podklady na dohnání, pracovní list s řešením krok za krokem, další příklady od lehkých po těžké, tahák Must know a ověřené odkazy na výklady, videa a simulace.</p>
-    <div class="cta-row"><a class="cta" href="#/pruvodce">Vstoupit do průvodce <span aria-hidden="true">→</span></a><a href="#/kurz/12">Rovnou na STEM 1.+2. ročník</a><a href="#/kurz/MM">Maturitní matematika</a></div></section>
+  const f = [['📐', '#/svp/MAT', 'Matematika', 'Čísla, výrazy, rovnice, funkce, geometrie, analytická geometrie, kombinatorika a statistika.'],
+    ['⚛️', '#/svp/FYZ', 'Fyzika', 'Měření, pohyb a síly, energie, teplo, elektřina, magnetismus, optika a fyzika mikrosvěta.'],
+    ['💻', '#/svp/INF', 'Informatika', 'Informace a data, algoritmy a programování v Pythonu, sítě, informační systémy, bezpečnost a AI.'],
+    ['🧪', '#/pokusy', 'Pokusy doma', `${PK.length} karet domácích experimentů podle ročního období, včetně astronomie a zpracování dat.`],
+    ['🚀', '#/projekty', 'STEM projekty', 'Měření mobilem nebo domácími pomůckami, matematický model a vyhodnocení dat v Pythonu.'],
+    ['📝', '#/testy', 'Ukázkové testy', '30minutové testy k výstupům ŠVP s klíčem, řešením a kritérii splnění – bez bodů a známek.'],
+    ['🤖', '#/ai', 'Učení s AI', `${ai} návodů, jak se učit s Gemini v režimu učení s vedením a jak ověřovat odpovědi AI.`],
+    ['🚌', '#/exkurze', 'Exkurze a výjezdy', `${ex} dobře naplánovaných návrhů výjezdů za vědou a technikou po celé republice.`]];
+  return `<section class="hero2"><div>
+      <div class="eyebrow">Otevřené vzdělávání · STEM</div>
+      <h1>STEM průvodce</h1>
+      <p class="lead">Otevřené materiály pro výuku matematiky, fyziky a informatiky. Přípravy lekcí, pracovní listy s řešením, další příklady, projekty, domácí experimenty, obrazové karty a ověřené odkazy na jednom místě.</p>
+      <div class="trust"><span>Zdarma</span><span>Bez registrace</span><span>Bez paywallu</span></div>
+      <div class="btnrow"><a class="btn p" href="#/pruvodce">Procházet materiály →</a><a class="btn" href="#/jak-vznika">Jak projekt vzniká</a></div></div>
+    <div class="shot">${shot.map(x => `<a href="${x.u}" target="_blank" rel="noopener" title="${esc(x.n)}"><img src="${x.img}" alt="${esc(x.n)}"></a>`).join('')}<div class="cap">Ukázka: ${esc(sl.tema)} – ${shot.map(x => x.n.toLowerCase()).join(', ')}</div></div></section>
+    ${aiStrip()}
     <div class="stats">${st.map(([n, t]) => `<div class="card"><b>${n.toLocaleString('cs-CZ')}</b><span>${t}</span></div>`).join('')}</div>
-    <div class="sechead"><h2>Jak je průvodce postavený</h2></div>
-    <div class="grid g4 steps">
-      <div class="card step"><h3>Výstupy ŠVP</h3><p>Všechno vychází z výstupů školního vzdělávacího programu – co má žák na konci umět a čím to doloží.</p></div>
-      <div class="card step"><h3>Témata a lekce</h3><p>Výstupy jsou rozložené do témat po týdnech. Každé téma má svou stránku s materiály a návaznostmi.</p></div>
-      <div class="card step"><h3>Učení online</h3><p>Průvodce je dělaný pro online výuku přes Meet nebo Discord: pokusy doma nebo v simulaci, spolupráce na dálku.</p></div>
-      <div class="card step"><h3>Portfolio bez známek</h3><p>Žák dokládá výstupy v portfoliu. Ukázkové testy a kritéria splnění mu ukážou, co se od něj čeká.</p></div>
+    <div class="kick2">Kurzy</div><h2 class="h2big">Ucelené vzdělávací celky</h2>
+    <p class="sub">Nejde o izolované pracovní listy. Každý materiál patří k tématu, které má své místo v kurzu, týdnu a výstupech školního vzdělávacího programu.</p>
+    <div class="grid g4">${courseCards()}</div>
+    <div class="kick2">Co zde najdete</div><h2 class="h2big">Od přípravy lekce po projekt</h2>
+    <div class="grid g4">${f.map(([e, h, t, d]) => `<a class="card pad feat" href="${h}"><span class="emo" aria-hidden="true">${e}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></a>`).join('')}</div>
+    <div class="kick2">Ukázka konkrétní přípravy</div>
+    <div class="demo"><div class="thumbs">${sl.files.slice(0, 6).map(x => `<a href="${x.u}" target="_blank" rel="noopener" title="${esc(x.n)}"><img src="${x.img}" alt="${esc(x.n)}" loading="lazy"></a>`).join('')}</div>
+      <div><h2 class="h2big">Jedno téma, všechny podklady pohromadě</h2>
+      <p class="sub" style="margin-bottom:0">Téma <b>${esc(sl.tema)}</b> (${esc(CBY[sl.k].nazev)}) ukazuje, co najdete u každého ze ${DATA.lessons.length} témat:</p>
+      <ul class="ticks"><li>co se v tématu řeší a neřeší a co znát předem</li><li>podklady na dohnání včetně učiva základní školy</li><li>pracovní list s výsledky a řešením krok za krokem</li><li>další příklady od lehkých po těžké</li><li>tahák Must know a obrazové karty</li><li>struktura online lekce na 45 minut a vazba na výstupy ŠVP</li><li>katalog ověřených výkladů, videí a simulací</li></ul>
+      <div class="btnrow"><a class="btn" href="#/hodina/${sl.id}">Otevřít ukázkové téma →</a></div></div></div>
+    <div class="kick2">Jak projekt vzniká</div><h2 class="h2big">Člověk zadává. AI vytváří.</h2>
+    <p class="sub">Projekt vzniká jako experiment s praktickým využitím současné generativní AI ve vzdělávání. Autor určuje zadání, cíle, strukturu a směr projektu. Samotné texty, úlohy, pracovní listy, ilustrace, projekty a významná část kódu jsou generovány pomocí AI nástrojů. Cílem není tvrdit, že AI vytváří bezchybné materiály – projekt má ukazovat, co dnes AI dokáže vytvořit a kde je stále nezbytná lidská kontrola.</p>
+    ${flowBlock()}
+    <p style="margin:12px 0 0"><a href="#/jak-vznika"><b>Podrobně: použitý model, agenti a nástroje →</b></a></p>
+    ${verifyBox()}
+    ${reportBox()}
+    <div style="margin-top:44px">${supportBlock()}</div>
+    <div class="card land-end"><h2>Začněte tématem, které vás čeká</h2><a class="cta" href="#/pruvodce">Procházet materiály <span aria-hidden="true">→</span></a></div>`;
+}
+const crumb = t => `<div class="crumbs"><a href="#/">Úvod</a> › ${esc(t)}</div>`;
+function viewJak() {
+  const nf = DATA.lessons.reduce((a, l) => a + l.files.length, 0);
+  const A = PUB.agents || {};
+  return `${crumb('Jak projekt vzniká')}<h1 style="font-size:clamp(28px,4vw,40px)">Jak projekt vzniká</h1>
+    <p class="lead" style="margin:8px 0 0;max-width:860px">Projekt vzniká jako experiment s praktickým využitím současné generativní AI ve vzdělávání. Autor určuje zadání, cíle, strukturu a směr projektu. Samotné texty, úlohy, pracovní listy, ilustrace, projekty a významná část kódu jsou generovány pomocí AI nástrojů.</p>
+    <p class="sub" style="margin-top:10px">Cílem není tvrdit, že AI vytváří bezchybné vzdělávací materiály. Naopak. Projekt má ukazovat, co dnes AI dokáže vytvořit a kde je stále nezbytná lidská kontrola.</p>
+    ${flowBlock()}
+    <div class="kick2">Použitý model a prostředí</div>
+    <div class="tech">
+      <div class="card pad"><h3>🧠 Jazykový model</h3><ul>
+        <li><b>Claude Opus 5.5</b> (Anthropic) – hlavní model projektu: psal texty, úlohy a řešení, navrhoval strukturu, kreslil podklady obrazových karet (jako program), programoval generátory PDF i tento web.</li>
+        <li>Na stejném modelu běželi i všichni pomocní agenti.</li></ul></div>
+      <div class="card pad"><h3>🛠️ Pracovní prostředí</h3><ul>
+        <li><b>Claude Code</b> (Anthropic) v aplikaci Claude pro macOS – agentní režim, ve kterém model sám čte a zapisuje soubory, spouští programy a kontroly a řídí další agenty.</li>
+        <li>Model pracuje nad složkou s daty projektu (JSON) a generátory; výstupem jsou PDF, dokumenty Word a Excel pro učitele a tento web.</li></ul></div>
     </div>
-    <div class="sechead"><h2>Co v průvodci najdeš</h2></div>
-    <div class="grid g4">${f.map(([h, t, d]) => `<a class="card pad feat" href="${h}"><h3>${esc(t)}</h3><p>${esc(d)}</p></a>`).join('')}</div>
-    <div class="sechead"><h2>Pro koho</h2></div>
-    <div class="grid g3">
-      <div class="card pad feat"><h3>Pro žáky</h3><p>Na učení vlastním tempem, na dohnání vynechané látky, na procvičování před doložením výstupu i na přípravu k maturitě.</p></div>
-      <div class="card pad feat"><h3>Pro učitele</h3><p>Struktury online lekcí na 45 minut, pracovní listy, ukázkové testy, projekty a pokusy, které žáci zvládnou doma.</p></div>
-      <div class="card pad feat"><h3>Pro rodiče a veřejnost</h3><p>Přehled, co se v matematice, fyzice a informatice na střední škole učí a jak se to dá zvládnout doma.</p></div>
+    <div class="kick2">Použití agenti</div>
+    <div class="tech">
+      <div class="card pad"><h3>🤝 Pomocní agenti</h3><ul>
+        <li><b>${A.runs || 'přes 100'} běhů pomocných agentů</b> (Claude Code, typ „general-purpose“), až 20 současně. Každý měl přesně vymezenou část práce a závazná pravidla.</li>
+        <li>Tvorba obsahu lekcí (Must know, pracovní listy, struktury lekcí) po skupinách témat.</li>
+        <li>Převod všech ${DATA.lessons.length} lekcí na online výuku, řešení krok za krokem a podklady na dohnání.</li>
+        <li>Katalogy zdrojů – rešerše a ověření ${DATA.lessons.reduce((a, l) => a + (l.zd && !l.zdtmp ? l.zd.length : 0), 0).toLocaleString('cs-CZ')} odkazů.</li>
+        <li>Obrazové karty, další příklady, STEM projekty, karty pokusů, ukázkové testy (8 agentů podle předmětů), Učení s AI a exkurze (s vlastními rešeršními agenty).</li></ul></div>
+      <div class="card pad"><h3>📚 Agenti a skilly projektu</h3><ul>
+        <li><b>4 agenti pro vyučujícího</b>: Nováček (Matematika pro začátečníky), Začátečník (STEM 1.+2.), Pokročilý (STEM 3.+4.), Maturant (Maturitní matematika) – vědí, co je v které lekci, a připraví další úlohy.</li>
+        <li><b>19 skillů</b> – návodů pro jednotlivé druhy materiálů (pracovní list, Must know, osnova lekce, obrazová karta, ukázkové testy, projekty, pokusy, online výuka…).</li>
+        <li>Závazné průvodce pro agenty a kontrolní skripty, které hlídají formát, počty úloh, délku lekce, tykání a online prostředí.</li></ul></div>
     </div>
-    <p class="muted small" style="margin-top:22px">Materiály vznikly pro výuku STEM na online <a href="https://stredni.erazim.cz/online/" target="_blank" rel="noopener">Střední škole Erazim</a>. Všechna PDF se otevírají v nové kartě a dají se stáhnout.</p>
-    <div class="card land-end"><h2>Začni tématem, které tě čeká</h2><a class="cta" href="#/pruvodce">Vstoupit do průvodce <span aria-hidden="true">→</span></a></div>`;
+    <div class="kick2">Rozšíření a nástroje</div>
+    <div class="tech">
+      <div class="card pad"><h3>🔌 Rozšíření použitá AI</h3><ul>
+        <li><b>Vestavěný prohlížeč</b> aplikace Claude – kontrola webu na počítači i mobilu, ve světlém i tmavém režimu.</li>
+        <li><b>Vyhledávání a čtení webu</b> (WebSearch, WebFetch) – rešerše zdrojů, exkurzí a nápovědy Google Gemini, ověřování odkazů.</li>
+        <li><b>Skilly Anthropic</b> pro dokumenty Word a Excel (docx, xlsx) a pro grafy (dataviz).</li>
+        <li><b>GitHub CLI</b> – publikace školní verze průvodce.</li></ul></div>
+      <div class="card pad"><h3>⚙️ Technické řešení</h3><ul>
+        <li><b>Python</b> – generátory a kontroly (matplotlib, NumPy a SymPy pro obrázky a ověřování výpočtů, python-docx, openpyxl, reportlab).</li>
+        <li><b>Node.js a Google Chrome bez okna</b> – převod HTML na ${nf.toLocaleString('cs-CZ')} PDF u témat; <b>Poppler</b> – náhledy PDF.</li>
+        <li>Vlastní převod zápisu vzorců do MathML, takže vzorce na webu i v PDF vypadají matematicky.</li>
+        <li>Web je jeden soubor HTML, CSS a JavaScript bez externích knihoven a bez sledování návštěvníků.</li></ul></div>
+    </div>
+    <div class="kick2">Jak se materiály kontrolují</div>
+    <div class="card pad"><ul class="ticks">
+      <li>automatické kontroly formátu (počty úloh, 45 minut lekce, obtížnost, tykání, online prostředí, zápis vzorců)</li>
+      <li>výsledky úloh přepočítané v Pythonu a programy v úlohách skutečně spuštěné</li>
+      <li>odkazy na internet ověřené, že fungují (a u videí, že existují)</li>
+      <li>vizuální kontrola vybraných PDF</li>
+      <li>zadání, rozhodnutí a průběžná kontrola autorem projektu</li></ul>
+      <p class="muted small" style="margin:10px 0 0">Ani tyto kontroly nezaručují bezchybnost. Proto platí: AI vytvořila, člověk ověřuje.</p></div>
+    ${verifyBox()}${reportBox()}`;
+}
+function viewOProjektu() {
+  return `${crumb('O projektu')}<h1 style="font-size:clamp(28px,4vw,40px)">O projektu</h1>
+    <p class="lead" style="margin:8px 0 0;max-width:860px">STEM průvodce je veřejně dostupný projekt s materiály pro výuku matematiky, fyziky a informatiky na střední škole – od přípravy lekce po projekt.</p>
+    ${aiStrip()}
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card pad feat"><h3>Co obsahuje</h3><p>${DATA.lessons.length} témat ve čtyřech kurzech, ke každému pracovní list s řešením, tahák, podklady na dohnání, další příklady, strukturu lekce a ověřené zdroje. K tomu ukázkové testy, projekty, pokusy doma, materiály k učení s AI a návrhy exkurzí.</p></div>
+      <div class="card pad feat"><h3>Odkud pochází</h3><p>Materiály vznikly pro výuku STEM na online <a href="https://stredni.erazim.cz/online/" target="_blank" rel="noopener">Střední škole Erazim</a>: lekce přes Meet nebo Discord, pokusy doma nebo v simulaci, hodnocení portfoliem bez známek. Použít je můžete i jinde.</p></div>
+      <div class="card pad feat"><h3>Pro koho</h3><p>Pro žáky na učení vlastním tempem a dohnání látky, pro učitele na přípravu výuky a pro rodiče a veřejnost, kteří chtějí vědět, co se v STEM na střední škole učí.</p></div>
+    </div>
+    <div class="deep" style="margin-top:18px"><h2>Zdarma znamená zdarma</h2><p>Všechny materiály jsou dostupné bez registrace a bez paywallu. Projekt má sloužit učitelům a studentům jako otevřená knihovna materiálů, které lze použít, ověřit a dále rozvíjet.</p></div>
+    <div class="kick2">Princip projektu</div><h2 class="h2big">AI vytvořila. Člověk ověřuje.</h2>
+    <p class="sub">Obsah i technické řešení vznikají s rozsáhlým využitím generativní AI. <a href="#/jak-vznika">Jak přesně projekt vzniká →</a></p>
+    ${verifyBox()}${reportBox()}
+    <div class="btnrow"><a class="btn p" href="#/pruvodce">Procházet materiály →</a><a class="btn" href="#/podpora">☕ Podpořit projekt</a></div>`;
+}
+function viewChyba() {
+  const R = PUB.report || {};
+  return `${crumb('Nahlásit chybu')}<h1 style="font-size:clamp(28px,4vw,40px)">Nahlásit chybu</h1>
+    <p class="lead" style="margin:8px 0 0;max-width:860px">Materiály vytváří generativní AI, a proto jsou nahlášené chyby pro projekt nejcennější zpětnou vazbou. Každé hlášení pomůže materiály zlepšit i ostatním.</p>
+    <div class="grid g2" style="margin-top:18px">
+      <div class="card pad feat"><h3>Co do hlášení napsat</h3><ul class="ticks"><li>kde chyba je – téma nebo název PDF, strana, číslo úlohy</li><li>co je špatně – výsledek, zadání, tvrzení, postup, odkaz</li><li>jak by to podle vás mělo být, pokud to víte</li></ul></div>
+      <div class="card pad feat"><h3>Nejrychlejší cesta</h3><p>Na stránce každého tématu je odkaz <b>Nahlásit chybu v tomto tématu</b> – hlášení se předvyplní názvem tématu a odkazem.</p>
+        <div class="btnrow"><a class="btn p" href="${reportHref('obecné', 'STEM průvodce')}" target="_blank" rel="noopener">⚑ Nahlásit chybu</a></div>
+        ${R.email ? '' : '<p class="muted small" style="margin:10px 0 0">Hlášení se zakládá na GitHubu (potřebujete bezplatný účet GitHub). Hlášení jsou veřejná – nepište do nich osobní údaje.</p>'}</div>
+    </div>`;
+}
+function viewPodpora() {
+  return `${crumb('Podpořit projekt')}<h1 style="font-size:clamp(28px,4vw,40px)">Podpořit STEM průvodce</h1>
+    <div style="margin-top:16px">${supportBlock()}</div>
+    <div class="box2 good" style="grid-template-columns:1fr"><div><b>Na co podpora půjde</b><p>Na provoz webu a domény a na další rozvoj – nové materiály, opravy nahlášených chyb a nástroje, se kterými projekt vzniká.</p></div></div>`;
 }
 
 /* ---------- router */
@@ -868,8 +1072,12 @@ function route() {
   const parts = h.replace(/^#\/?/, '').split('/');
   const app = $('#app'); let html, after = null, hlId = null;
   switch (parts[0]) {
-    case '': html = PUB ? viewLanding() : viewHome(); break;
+    case '': html = PUB ? viewLanding() : viewHome(); if (PUB) after = bindCopy; break;
     case 'pruvodce': html = viewHome(); break;
+    case 'jak-vznika': html = PUB ? viewJak() : notFound(); break;
+    case 'o-projektu': html = PUB ? viewOProjektu() : notFound(); break;
+    case 'chyba': html = PUB ? viewChyba() : notFound(); break;
+    case 'podpora': html = PUB ? viewPodpora() : notFound(); after = bindCopy; break;
     case 'kurz': html = viewCourse(parts[1]); after = () => bindCourse(parts[1]); break;
     case 'hodina': html = viewLesson(parts[1]); break;
     case 'svp': { const t = parts[1]; const isCode = t && /-/.test(t); if (t && !isCode) store.set('svpSubj', t); html = viewSvp(isCode ? t : (t ? t + '-' : '')); if (isCode) hlId = 'o-' + t; break; }
